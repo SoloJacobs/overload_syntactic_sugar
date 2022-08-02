@@ -6,3 +6,6 @@ _: GetItem
 
 def f(_: GetItem) -> None:
     ...
+
+class Test(GetItem):
+    a: int
