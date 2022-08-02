@@ -1,6 +1,8 @@
 from sol import GetItem
 
-reveal_type(GetItem())
+# reveal_type(GetItem())
 
-def f():
+_: GetItem
+
+def f(_: GetItem) -> None:
     ...
