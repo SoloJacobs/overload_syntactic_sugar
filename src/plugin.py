@@ -7,14 +7,6 @@ from mypy.types import NoneType, Type
 
 
 class CustomPlugin(Plugin):
-    def get_type_analyze_hook(self, fullname: str) -> None:
-        if fullname.startswith("sol.GetItem"):
-            print(f"get_type_analyze_hook({fullname})")
-
-    def get_base_class_hook(self, fullname: str) -> None:
-        if fullname.startswith("sol.GetItem"):
-            print(f"get_base_class_hook({fullname})")
-
     def get_method_hook(
         self, fullname: str
     ) -> None | Callable[[MethodContext], Type]:
@@ -51,7 +43,7 @@ def getitem_get_callback(ctx: MethodContext) -> Type:
 
     type_info = getattr(ctx.type, "type", None)
     if not isinstance(type_info, TypeInfo) or not any(
-        base.serialize() == "sol.GetItem" for base in type_info.bases
+        base.serialize() == "sol.Get" for base in type_info.bases
     ):
         return default_return_type
 
@@ -71,5 +63,6 @@ def getitem_get_callback(ctx: MethodContext) -> Type:
 
 
 def plugin(version: str) -> type[CustomPlugin]:
+    # TODO: check what version this plug-in is compatible with.
     # ignore version argument if the plugin works with all mypy versions.
     return CustomPlugin

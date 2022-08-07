@@ -1,6 +1,6 @@
 import typing
 
-class GetItem(typing.Protocol):
+class Get(typing.Protocol):
     def get(self, key: str) -> typing.NoReturn:
         ...
 

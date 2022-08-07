@@ -1,8 +1,6 @@
 import typing
 
-from sol import GetItem, field
-
-# reveal_type(GetItem())
+from sol import Get, field
 
 # Test cases for field
 
@@ -23,17 +21,17 @@ reveal_type(field("a", "b"))
 
 # Unwanted syntax
 
-_: GetItem
+_: Get
 
 
-def f(_: GetItem) -> None:
+def f(_: Get) -> None:
     ...
 
 
 # Wanted syntax
 
 
-class Test(GetItem):
+class Test(Get):
     a: int
     b: str
 
