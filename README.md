@@ -1,6 +1,6 @@
 Sometimes I write code like this:
 
-```
+```python
 import typing
 
 
@@ -20,7 +20,7 @@ class A(typing.Protocol):
 
 However, I would much rather implement a special `Get` class, which allows me use syntax very similiar to `TypedDict`:
 
-```
+```python
 class A(Get):  # Should do the same as the definition above.
     a: int
     b: str
